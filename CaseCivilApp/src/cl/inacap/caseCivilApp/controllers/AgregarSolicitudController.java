@@ -1,11 +1,19 @@
 package cl.inacap.caseCivilApp.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
+import cl.inacap.caseCivilModel.dao.SolicitudesDAOLocal;
+import cl.inacap.caseCivilModel.dto.Solicitud;
 
 /**
  * Servlet implementation class AgregarSolicitudController
@@ -13,6 +21,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/AgregarSolicitudController.do")
 public class AgregarSolicitudController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	@Inject
+	private SolicitudesDAOLocal solicitudesDAO;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -33,8 +43,38 @@ public class AgregarSolicitudController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	
+	List<String>errores=new ArrayList <>();
+	String rut =request.getParameter("rut-txt").trim();
+	if(rut.isEmpty()) {
+		errores.add("Debe ingresar rut");
+	}else if (!rut.matches ( "[0-9]{7,8}+-[0-9kk]{1}$")) {
+		errores.add("Debe ingresar rut correctamente");
 	}
-
+	String nombre=request.getParameter("nombre-txt").trim();
+	if (nombre .isEmpty()) {
+		errores.add("debe ingresar nombre y apellido");
+	}
+	String tipo=request.getParameter("tipo-select").trim();
+	if(tipo.isEmpty()) {
+		errores.add("Debe seleccionar una tipo de solicitud");
+	}
+	if (errores.isEmpty()){
+		Solicitud solicitud =new Solicitud();
+		solicitud.setTipoSolicitud(tipo);
+		solicitud.setClientes(null);
+		solicitud.setNumeroAtencion(0);
+		solicitudesDAO.save(solicitud);
+		
+		request.setAttribute("mensaje","solicitud ingresada");
+	}
+	
+	else {
+		
+		request.setAttribute("errores", errores);
+	
 }
+doGet(request,response);
+	}
+}
+

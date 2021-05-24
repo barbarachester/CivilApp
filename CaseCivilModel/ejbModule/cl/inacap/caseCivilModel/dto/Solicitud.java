@@ -3,6 +3,10 @@ package cl.inacap.caseCivilModel.dto;
 import java.util.List;
 
 public class Solicitud {
+	private  String tipoSolicitud;
+	private int numeroAtencion;
+	private List <Cliente> clientes;
+
 	public String getTipoSolicitud() {
 		return tipoSolicitud;
 	}
@@ -21,8 +25,5 @@ public class Solicitud {
 	public void setClientes(List<Cliente> clientes) {
 		this.clientes = clientes;
 	}
-	private  String tipoSolicitud;
-	private int numeroAtencion;
-	private List <Cliente> clientes;
-
+	
 }
