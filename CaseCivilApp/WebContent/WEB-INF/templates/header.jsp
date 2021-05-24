@@ -11,7 +11,7 @@
 <header>
 		<nav class="navbar has-background-info" role="navigation" aria-label="main navigation">
   			<div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io"></a>
+    <a class="navbar-item" href="index.jsp"></a>
       		
     </div>
  <div id="navbarBasicExample" class="navbar-menu">
