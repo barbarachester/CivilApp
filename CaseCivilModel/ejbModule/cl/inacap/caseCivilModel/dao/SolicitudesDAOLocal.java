@@ -11,5 +11,5 @@ public interface SolicitudesDAOLocal {
 void save (Solicitud solicitud);
 List <Solicitud> getAll();
 void delete (Solicitud solicitud);
-
+List<Solicitud>filterByName (String nombrec);
 }

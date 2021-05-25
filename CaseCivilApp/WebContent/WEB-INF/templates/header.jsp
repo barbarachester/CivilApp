@@ -18,7 +18,7 @@
     <div class="navbar-start">
       <a class="navbar-item">Home</a>
       <a class="navbar-item"  href="AgregarSolicitudController.do"> Ingresar Solicitud </a>
-      <a class="navbar-item"> Atender Solicitudes</a>
+      <a class="navbar-item" href="AtenderSolicitudesController.do"> Atender Solicitudes</a>
   </div>
     </div>
 

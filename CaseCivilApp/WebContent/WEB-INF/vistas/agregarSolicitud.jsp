@@ -41,7 +41,7 @@
         <option>Solicitud de cédula de identidad</option>
         <option>Retiro de Cédula de identidad</option>
         <option>Solicitud de Certificado de Nacimiento</option>
-        <option>Solicitud de certificado de Defunción></option>
+        <option>Solicitud de certificado de Defunción</option>
       </select>
     </div>
   </div>

@@ -2,6 +2,7 @@ package cl.inacap.caseCivilModel.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -38,4 +39,20 @@ List<Solicitud> solicitudes =new ArrayList <>();
 	solicitudes.remove(solicitud);
 	}
 
+	@Override
+	public List<Solicitud> filterByName(String nombrec) {
+		
+		
+		return solicitudes.stream().filter(c->c.getTipoSolicitud().contains(nombrec)).collect(Collectors.toList());
+			}
+		
+	
+
+	
+	
+
 }
+
+
+
+
